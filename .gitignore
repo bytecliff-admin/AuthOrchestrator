@@ -343,3 +343,5 @@ healthchecksdb
 
 #vscode 
 .vscode
+auth_orchestrator_frontend/AuthOrchestrator.Web/package-lock.json
+auth_orchestrator_frontend/AuthOrchestrator.Web/.editorconfig

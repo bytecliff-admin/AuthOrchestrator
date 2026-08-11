@@ -1,0 +1,40 @@
+<main class="auth-shell">
+  <section class="auth-card" aria-live="polite">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Authentication demo using AuthService</p>
+
+    <p *ngIf="infoMessage" class="info">{{ infoMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+    <ng-container *ngIf="!isAuthenticated; else loggedInState">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        [value]="email"
+        (input)="onEmailInput($event)"
+        autocomplete="username"
+        placeholder="you@company.com"
+      />
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        [value]="password"
+        (input)="onPasswordInput($event)"
+        autocomplete="current-password"
+        placeholder="Enter your password"
+      />
+
+      <button type="button" (click)="onLogin()" [disabled]="isLoading">
+        {{ isLoading ? 'Signing in...' : 'Sign in' }}
+      </button>
+    </ng-container>
+
+    <ng-template #loggedInState>
+      <p class="status">Signed in as {{ email || 'current user' }}</p>
+      <button type="button" class="logout" (click)="onLogout()">Sign out</button>
+    </ng-template>
+  </section>
+</main>
